@@ -1,12 +1,12 @@
 public class employeeWageCalculator{
 	public static void main(String[] args){
-		final int fullTime = 2, partTime = 1, wagePerHr = 20, partTimeHr = 4,
-						fullTimeHr = 8, workDaysPerMonth = 20 ;
+		final int fullTime = 2, partTime = 1, wagePerHr = 20, partTimeHr = 8,
+						fullTimeHr = 16, workDaysPerMonth = 20, maxHr = 100 ;
 		int totalHr = 0;
 		int totalFullTimeDays = 0;
 		int totalPartTimeDays = 0;
 		int totalAbsent = 0;
-		for (int i = 0; i < 20; i++){
+		while ( totalHr < maxHr && (totalFullTimeDays + totalPartTimeDays) < workDaysPerMonth ){
 			int random_number=(int)(Math.random() * 10 % 3);
 			switch (random_number){
 				case fullTime:
@@ -27,5 +27,5 @@ public class employeeWageCalculator{
 		System.out.println("total employee hours worked for the month is " + totalHr);
 		System.out.println("total wage for the month " + (totalHr * wagePerHr));
 
-	}   
+	}
 }
