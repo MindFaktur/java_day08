@@ -1,17 +1,31 @@
 public class employeeWageCalculator{
-   public static void main(String[] args){
-	final int fullTime = 2, partTime = 1, wagePerHr = 20, partTimeHr = 8, fullTimeHr = 16;
-	int random_number=(int)(Math.random() * 10 % 3);
-	switch (random_number){
-		case fullTime:
-				System.out.println("Employee has worked  full time  so Daily wage is " + (wagePerHr * fullTimeHr));
-							break;
-		case partTime:
-				System.out.println("Employee has worked part time so Daily wage is " + (wagePerHr * partTimeHr));
-							break;
-		default:
-				System.out.println("Employee was absent so wage is 0");
-	}
+	public static void main(String[] args){
+		final int fullTime = 2, partTime = 1, wagePerHr = 20, partTimeHr = 4,
+						fullTimeHr = 8, workDaysPerMonth = 20 ;
+		int totalHr = 0;
+		int totalFullTimeDays = 0;
+		int totalPartTimeDays = 0;
+		int totalAbsent = 0;
+		for (int i = 0; i < 20; i++){
+			int random_number=(int)(Math.random() * 10 % 3);
+			switch (random_number){
+				case fullTime:
+						totalHr += fullTimeHr;
+						totalFullTimeDays += 1;
+						break;
+				case partTime:
+						totalPartTimeDays += 1;
+						totalHr += partTimeHr;
+						break;
+				default:
+						totalAbsent += 1;
+			}
+		}
+		System.out.println("total days worked as full time is " + totalFullTimeDays);
+		System.out.println("total days worked as part time is " + totalPartTimeDays);
+		System.out.println("total days absent is " + totalAbsent);
+		System.out.println("total employee hours worked for the month is " + totalHr);
+		System.out.println("total wage for the month " + (totalHr * wagePerHr));
 
-    }
+	}   
 }
