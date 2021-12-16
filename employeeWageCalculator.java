@@ -1,11 +1,18 @@
+import java.util.Scanner;
+
 public class employeeWageCalculator{
     public static void main(String[] args){
         System.out.println(" Welcome to Employee wage calculator ");
+        execution();
+    }
+
+    public static void execution() {
         ValuesAndMethods obj = new ValuesAndMethods();
+        obj.companyData();
         while ( (obj.maxDaysEmpWorked < obj.maxWorkDays) && (obj.maxHrsEmpWorked < obj.maxWorkHrs) ){
-            if ( obj.attendance() == obj.isAbsent ){
+            if ( obj.attendance() == 0 ){
                 obj.totalAbsentDays++;
-            }else if ( obj.attendance() == obj.isPartTime ){
+            }else if ( obj.attendance() == 1 ){
                 obj.empWage = (obj.empWage + obj.wage(obj.partTimeHr));
                 obj.maxDaysEmpWorked++;
                 obj.maxHrsEmpWorked += obj.partTimeHr;
@@ -17,6 +24,7 @@ public class employeeWageCalculator{
                 obj.totalFullTimeDays++;
             }
         }
+        System.out.println(" The company name is " + obj.companyName);
         System.out.println(" The total number of days worked by employee is " + obj.maxDaysEmpWorked + " days");
         System.out.println(" The total number of days absent is " + obj.totalAbsentDays + " days");
         System.out.println(" The total number of days worked as part time is " + obj.totalPartTimeDays + " days");
@@ -28,10 +36,26 @@ public class employeeWageCalculator{
 }
 
 class ValuesAndMethods{
-    int partTimeHr = 4, fullTimeHr = 8, maxDaysEmpWorked = 0, maxWorkDays = 20, empWage = 0,
-            maxHrsEmpWorked = 0, maxWorkHrs = 100, isPresent = 2, isPartTime = 1, isAbsent = 0,
-            totalPartTimeDays = 0, totalFullTimeDays = 0, totalAbsentDays = 0;
-    static int wagePerHr = 20;
+    public int partTimeHr, fullTimeHr, maxDaysEmpWorked, maxWorkDays, empWage,
+            maxHrsEmpWorked, maxWorkHrs, totalPartTimeDays, totalFullTimeDays, totalAbsentDays, wagePerHr;
+    public String companyName;
+
+    public void companyData() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println(" Please enter company name ");
+        companyName = scan.nextLine();
+        System.out.println(" Please enter full time hours ");
+        fullTimeHr = scan.nextInt();
+        System.out.println(" Please enter part time hours ");
+        partTimeHr = scan.nextInt();
+        System.out.println(" Please enter the maximum number of working days in a month that an employee should not exceed ");
+        maxWorkDays = scan.nextInt();
+        System.out.println(" Please enter the maximum number of working hours in a month that an employee should not exceed ");
+        maxWorkHrs = scan.nextInt();
+        System.out.println(" Please enter the employee wage per hour ");
+        wagePerHr = scan.nextInt();
+    }
+
     public static int rand_num(int numberOfDigits, int numToAdd) {
         return ((int)(Math.random() * 10 % numberOfDigits) + numToAdd);
     }
