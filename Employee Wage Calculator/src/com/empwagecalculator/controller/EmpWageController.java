@@ -4,10 +4,13 @@ import com.empwagecalculator.service.serviceprovider.OperationServiceProvider;
 import com.empwagecalculator.userinputs.UserInputs;
 import com.empwagecalculator.utils.InputUtility;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EmpWageController {
 
+    static List<String> empList = new ArrayList<>();
 
-    UserInputs userObj = new UserInputs();
     OperationServiceProvider obj = new OperationServiceProvider();
 
     public void menuChoice() {
@@ -18,16 +21,21 @@ public class EmpWageController {
             switch (option){
                 case 1:
                     String val = obj.execution();
-                    userObj.setEmpList(count,val);
-                    count++;
+                    empList.add(val);
                     break;
 
                 case 2:
-                    for (int i = 0; i < userObj.getEmpListLength(); i++) {
-                        System.out.println(userObj.getEmpList(i));
+                    for (int i = 0; i < empList.size(); i++) {
+                        System.out.println(empList.get(i));
                         System.out.println("  \n ");
                     }
                     break;
+
+                case 3:
+                    break;
+
+                default:
+                    System.out.println("Please choose from above options");
             }
             option = menu();
         }

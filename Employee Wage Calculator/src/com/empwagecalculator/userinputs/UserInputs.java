@@ -1,12 +1,14 @@
 package com.empwagecalculator.userinputs;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInputs {
 
     private int partTimeHr, fullTimeHr, maxDaysEmpWorked, maxWorkDays, empWage,
             maxHrsEmpWorked, maxWorkHrs, totalPartTimeDays, totalFullTimeDays, totalAbsentDays, wagePerHr;
     private String companyName;
 
-    private final String[] empList = new String[5];
 
     public int getPartTimeHr() {
         return partTimeHr;
@@ -102,18 +104,6 @@ public class UserInputs {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public void setEmpList(int index, String stringValue) {
-        empList[index] = stringValue;
-    }
-
-    public String getEmpList(int index) {
-        return empList[index];
-    }
-
-    public int getEmpListLength() {
-        return empList.length;
     }
 
 }

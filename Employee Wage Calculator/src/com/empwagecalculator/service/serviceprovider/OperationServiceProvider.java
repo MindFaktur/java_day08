@@ -4,6 +4,9 @@ import com.empwagecalculator.service.Operations;
 import com.empwagecalculator.userinputs.UserInputs;
 import com.empwagecalculator.utils.InputUtility;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OperationServiceProvider implements Operations {
 
     InputUtility inputObj = new InputUtility();
