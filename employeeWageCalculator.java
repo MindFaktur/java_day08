@@ -8,28 +8,36 @@ public class employeeWageCalculator{
 
     public static void execution() {
         ValuesAndMethods obj = new ValuesAndMethods();
-        obj.companyData();
-        while ( (obj.maxDaysEmpWorked < obj.maxWorkDays) && (obj.maxHrsEmpWorked < obj.maxWorkHrs) ){
-            if ( obj.attendance() == 0 ){
-                obj.totalAbsentDays++;
-            }else if ( obj.attendance() == 1 ){
-                obj.empWage = (obj.empWage + obj.wage(obj.partTimeHr));
-                obj.maxDaysEmpWorked++;
-                obj.maxHrsEmpWorked += obj.partTimeHr;
-                obj.totalPartTimeDays++;
-            }else{
-                obj.empWage = (obj.empWage + obj.wage(obj.fullTimeHr));
-                obj.maxDaysEmpWorked++;
-                obj.maxHrsEmpWorked += obj.fullTimeHr;
-                obj.totalFullTimeDays++;
+        Scanner newScan = new Scanner(System.in);
+        System.out.println("Press \n1) Add company 2)quit ");
+        int option = newScan.nextInt();
+        int count = 0;
+        while ( option != 2 ){
+            obj.companyData();
+            while ( (obj.maxDaysEmpWorked < obj.maxWorkDays) && (obj.maxHrsEmpWorked < obj.maxWorkHrs) ){
+                if ( obj.attendance() == 0 ){
+                    obj.totalAbsentDays++;
+                }else if ( obj.attendance() == 1 ){
+                    obj.empWage = (obj.empWage + obj.wage(obj.partTimeHr));
+                    obj.maxDaysEmpWorked++;
+                    obj.maxHrsEmpWorked += obj.partTimeHr;
+                    obj.totalPartTimeDays++;
+                }else{
+                    obj.empWage = (obj.empWage + obj.wage(obj.fullTimeHr));
+                    obj.maxDaysEmpWorked++;
+                    obj.maxHrsEmpWorked += obj.fullTimeHr;
+                    obj.totalFullTimeDays++;
+                }
             }
+            obj.empList[count] = obj.toStringValues();
+            count++;
+            System.out.println("Press \n1) Add company 2)quit ");
+            option = newScan.nextInt();
         }
-        System.out.println(" The company name is " + obj.companyName);
-        System.out.println(" The total number of days worked by employee is " + obj.maxDaysEmpWorked + " days");
-        System.out.println(" The total number of days absent is " + obj.totalAbsentDays + " days");
-        System.out.println(" The total number of days worked as part time is " + obj.totalPartTimeDays + " days");
-        System.out.println(" The total number of days worked as full time is " + obj.totalFullTimeDays + " days");
-        System.out.println(" The total wage for the month is " + obj.empWage);
+        for ( int i = 0; i < 5; i++ ){
+            System.out.println(obj.empList[i]);
+        }
+
     }
 
 
@@ -39,6 +47,7 @@ class ValuesAndMethods{
     public int partTimeHr, fullTimeHr, maxDaysEmpWorked, maxWorkDays, empWage,
             maxHrsEmpWorked, maxWorkHrs, totalPartTimeDays, totalFullTimeDays, totalAbsentDays, wagePerHr;
     public String companyName;
+    public String[] empList = new String[5];
 
     public void companyData() {
         Scanner scan = new Scanner(System.in);
@@ -67,6 +76,22 @@ class ValuesAndMethods{
     public int wage( int hours_worked ){
         return (wagePerHr * hours_worked);
     }
+
+    public String toStringValues() {
+       return (" Company Name : " +companyName +
+               "\n Full time hours : " + fullTimeHr +
+               "\n Part time hours : " + partTimeHr +
+               "\n Max Work Days per Month : " + maxWorkDays +
+               "\n Max Work Hours per Month : " + maxWorkHrs +
+               "\n Wage per Hour : " + wagePerHr +
+               "\n Total Days worked by employee : " + maxDaysEmpWorked +
+               "\n Total hours worked by employee : " + maxHrsEmpWorked +
+               "\n Total days employee worked full time : " + totalFullTimeDays +
+               "\n Total days employee worked part time : " + totalPartTimeDays +
+               "\n Total days employee was absent : " + totalAbsentDays +
+               "\n Total employee wage for the month : " + empWage );
+    }
+
 }
 
 //added ability to store total wage
