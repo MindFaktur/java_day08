@@ -68,3 +68,5 @@ class ValuesAndMethods{
         return (wagePerHr * hours_worked);
     }
 }
+
+//added ability to store total wage
