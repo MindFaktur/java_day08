@@ -1,5 +1,7 @@
 package com.empwagecalculator.service;
 
+import com.empwagecalculator.userinputs.UserInputs;
+
 public interface Operations {
 
     int rand_num(int numberOfDigits, int numToAdd);
@@ -11,5 +13,7 @@ public interface Operations {
     void companyData();
 
     String toStringValues();
+
+    String execution();
 
 }

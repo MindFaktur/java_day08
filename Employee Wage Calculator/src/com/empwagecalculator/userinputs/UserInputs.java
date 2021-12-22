@@ -5,26 +5,33 @@ import java.util.List;
 
 public class UserInputs {
 
-    private int partTimeHr, fullTimeHr, maxDaysEmpWorked, maxWorkDays, empWage,
+    private static int partTimeHr, fullTimeHr, maxDaysEmpWorked, maxWorkDays, empWage,
             maxHrsEmpWorked, maxWorkHrs, totalPartTimeDays, totalFullTimeDays, totalAbsentDays, wagePerHr;
-    private String companyName;
+    private static String companyName;
 
+    private final ArrayList<Integer> dailyWages = new ArrayList<>();
+
+    public List<Integer> getDailyWages() {
+        return dailyWages;
+    }
+
+    public void setDailyWages (Integer val) {
+        dailyWages.add(val);
+    }
 
     public int getPartTimeHr() {
         return partTimeHr;
     }
 
-    public void setPartTimeHr(int partTimeHr) {
-        this.partTimeHr = partTimeHr;
+    public void setPartTimeHr(int parthr) {
+        partTimeHr = parthr;
     }
 
     public int getFullTimeHr() {
         return fullTimeHr;
     }
 
-    public void setFullTimeHr(int fullTimeHr) {
-        this.fullTimeHr = fullTimeHr;
-    }
+    public void setFullTimeHr(int fullHr) { fullTimeHr = fullHr; }
 
     public int getMaxDaysEmpWorked() {
         return maxDaysEmpWorked;
@@ -38,8 +45,7 @@ public class UserInputs {
         return maxWorkDays;
     }
 
-    public void setMaxWorkDays(int maxWorkDays) {
-        this.maxWorkDays = maxWorkDays;
+    public void setMaxWorkDays(int maxDays) { maxWorkDays = maxDays ;
     }
 
     public int getEmpWage() {
@@ -62,8 +68,8 @@ public class UserInputs {
         return maxWorkHrs;
     }
 
-    public void setMaxWorkHrs(int maxWorkHrs) {
-        this.maxWorkHrs += maxWorkHrs;
+    public void setMaxWorkHrs(int maxHrs) {
+        maxWorkHrs = maxHrs;
     }
 
     public int getTotalPartTimeDays() {
@@ -94,16 +100,16 @@ public class UserInputs {
         return wagePerHr;
     }
 
-    public void setWagePerHr(int wagePerHr) {
-        this.wagePerHr = wagePerHr;
+    public void setWagePerHr(int wageHr) {
+        wagePerHr = wageHr;
     }
 
     public String getCompanyName() {
         return companyName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompanyName(String company_Name) {
+        companyName = company_Name;
     }
 
 }
