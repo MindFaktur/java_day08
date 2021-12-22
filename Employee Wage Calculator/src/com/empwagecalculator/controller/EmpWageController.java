@@ -5,39 +5,33 @@ import com.empwagecalculator.userinputs.UserInputs;
 import com.empwagecalculator.utils.InputUtility;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class EmpWageController {
 
-    static List<String> empList = new ArrayList<>();
+    public static OperationServiceProvider obj = new OperationServiceProvider();
 
-    OperationServiceProvider obj = new OperationServiceProvider();
 
     public void menuChoice() {
-        int option = menu();
-        int count = 0;
+        int option = 0;
         while ( option != 3 ){
-
+            option = menu();
             switch (option){
                 case 1:
                     String val = obj.execution();
-                    empList.add(val);
+                    System.out.println(val);
+                    System.out.println(obj.details);
                     break;
 
                 case 2:
-                    for (int i = 0; i < empList.size(); i++) {
-                        System.out.println(empList.get(i));
-                        System.out.println("  \n ");
-                    }
-                    break;
-
-                case 3:
+                    System.out.println(obj.companies);
                     break;
 
                 default:
                     System.out.println("Please choose from above options");
+
             }
-            option = menu();
         }
     }
 
